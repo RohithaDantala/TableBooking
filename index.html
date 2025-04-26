@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bella Tavola - Authentic Italian Restaurant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #4b2d16;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #e0c9b1;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            background-color: #4b2d16;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background-color: #63391c;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 20px;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #4b2d16;
+            margin-bottom: 20px;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #4b2d16;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #4b2d16;
+        }
+        
+        .about {
+            padding: 80px 0;
+            background-color: #f1ebe5;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #4b2d16;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .menu-preview {
+            padding: 80px 0;
+        }
+        
+        .menu-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .menu-card:hover .menu-image img {
+            transform: scale(1.1);
+        }
+        
+        .menu-info {
+            padding: 20px;
+        }
+        
+        .menu-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #4b2d16;
+        }
+        
+        .menu-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #4b2d16;
+            font-size: 1.2rem;
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            background-color: #f1ebe5;
+        }
+        
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .rating {
+            color: #ffb100;
+        }
+        
+        .cta {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        footer {
+            background-color: #4b2d16;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #e0c9b1;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #e0c9b1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                height: 500px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .btn {
+                margin: 5px;
+            }
+        }
+        .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600');
+    /* other styling */
+}
+        .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i0.wp.com/www.quytech.com/blog/wp-content/uploads/2022/08/How-to-Develop-a-Restaurant-Reservation-App-1.png?fit=3180%2C1713&ssl=1');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Book Your Table</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="tablebooking.html">Reservations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h1>Multi Cuisine</h1>
+        <p>Reserve your perfect spot and serve instantly</p>
+        <div>
+            <a href="menu.html" class="btn">View Menu</a>
+            <a href="tablebooking.html" class="btn btn-outline">Book a Table</a>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Us</h2>
+                <p>Our commitment to quality, tradition, and exceptional service makes La Bella Tavola a unique dining experience.</p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🍝</div>
+                    <h3>Authentic Recipes</h3>
+                    <p>Our dishes follow traditional Italian recipes passed down through generations, bringing the true taste of Italy to your table.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Fresh Ingredients</h3>
+                    <p>We source the finest local and imported ingredients to ensure every dish is prepared with quality and freshness.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🍷</div>
+                    <h3>Exquisite Wines</h3>
+                    <p>Our carefully curated wine selection features both local and Italian wines that perfectly complement your meal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://www.cogwave.in/wp-content/uploads/2021/12/tablereervation1.jpg" alt="La Bella Tavola Restaurant Interior">
+                </div>
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Your Perfect Table, Just a Click Away
+                        Imagine this: It's Friday night. The workweek is finally over, and you're dreaming of a cozy dinner with your favorite people. Maybe it's a romantic date, a long-overdue reunion with friends, a surprise birthday, or a quiet coffee with someone special. Now picture walking into a beautifully set restaurant, your name already waiting on the table card—no waiting, no stress, just smiles and satisfaction.  
+                        That’s the experience we want to give you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- <section class="menu-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Signature Dishes</h2>
+                <p>Explore some of our most beloved dishes, crafted with authentic ingredients and traditional techniques.</p>
+            </div>
+            
+            <div class="menu-cards">
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="/api/placeholder/400/300" alt="Osso Buco">
+                    </div>
+                    <div class="menu-info">
+                        <h3>Osso Buco</h3>
+                        <p>Slow-braised veal shanks with vegetables, white wine, and broth, served with saffron risotto.</p>
+                        <div class="price">$32</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="/api/placeholder/400/300" alt="Tagliatelle al Tartufo">
+                    </div>
+                    <div class="menu-info">
+                        <h3>Tagliatelle al Tartufo</h3>
+                        <p>Homemade tagliatelle pasta with black truffle cream sauce, mushrooms, and Parmigiano-Reggiano.</p>
+                        <div class="price">$28</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="/api/placeholder/400/300" alt="Branzino al Forno">
+                    </div>
+                    <div class="menu-info">
+                        <h3>Branzino al Forno</h3>
+                        <p>Oven-roasted Mediterranean sea bass with rosemary, lemon, and olive oil, served with seasonal vegetables.</p>
+                        <div class="price">$36</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="menu.html" class="btn">View Full Menu</a>
+            </div>
+        </div>
+    </section> -->
+    
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Guests Say</h2>
+                <p>Don't just take our word for it - here's what our valued guests have to say about their dining experience.</p>
+            </div>
+            
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The most authentic Italian food I've had outside of Italy. The pasta is clearly homemade and the ambiance transported me straight to Tuscany. Will definitely be coming back!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            
+                        </div>
+                        <div class="author-info">
+                            <h4>Emma Johnson</h4>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Chef Marco's osso buco is absolutely fantastic! The meat was tender and flavorful, and the service was impeccable. A hidden gem in the city!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                           
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "We celebrated our anniversary here and it couldn't have been more perfect. The staff went above and beyond to make our night special. The wine pairing recommendations were excellent!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                           
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah & David</h4>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <h2>Reserve Your Table Today</h2>
+            <p>Experience the authentic flavors of Italy in an elegant and welcoming atmosphere. Book your table now for an unforgettable dining experience.</p>
+            <a href="tablebooking.html" class="btn">Make a Reservation</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>La Bella Tavola</h3>
+                    <p>Authentic Italian cuisine in the heart of the city, bringing you the true flavors of Italy.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Hours</h3>
+                    <ul>
+                        <li>Monday - Thursday: 5:00 PM - 10:00 PM</li>
+                        <li>Friday - Saturday: 5:00 PM - 11:00 PM</li>
+                        <li>Sunday: 5:00 PM - 9:00 PM</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>123 Main Street</li>
+                        <li>City, State 12345</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Email: info@labellatavolarestaurant.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="tablebooking.html">Reservations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 La Bella Tavola Restaurant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

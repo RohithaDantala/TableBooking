@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bella Tavola - Authentic Italian Restaurant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #4b2d16;
+            color: white;
+            padding: 20px 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 30px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #e0c9b1;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1200x600/?restaurant,italian');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .btn {
+            background-color: #4b2d16;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: #63391c;
+        }
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 20px;
+        }
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .features, .about, .menu-preview, .testimonials {
+            padding: 80px 0;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #4b2d16;
+            margin-bottom: 20px;
+        }
+        .section-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        .feature-grid, .menu-cards, .testimonial-cards, .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-card, .menu-card, .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: #4b2d16;
+            margin-bottom: 20px;
+        }
+        .feature-card h3, .menu-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #4b2d16;
+        }
+        .menu-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .menu-card:hover img {
+            transform: scale(1.1);
+        }
+        .menu-info {
+            padding: 20px;
+        }
+        .price {
+            font-weight: bold;
+            color: #4b2d16;
+            font-size: 1.2rem;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .rating {
+            color: #ffb100;
+        }
+        .cta {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1200x400/?italian-food');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #4b2d16;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #e0c9b1;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        .footer-column a {
+            color: #e0c9b1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-column a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="container">
+    <div class="navbar">
+        <div class="logo">La Bella Tavola</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="tablebooking.html">Reservations</a></li>
+        </ul>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Authentic Italian Flavors</h1>
+    <p>Experience the finest Italian cuisine crafted with passion and tradition.</p>
+    <a href="menu.html" class="btn">Explore Menu</a>
+    <a href="#about" class="btn btn-outline">Learn More</a>
+</section>
+
+<section class="features container" id="about">
+    <div class="section-header">
+        <h2>Why Choose Us?</h2>
+        <p>We bring Italy's culinary magic to your plate with love and authenticity.</p>
+    </div>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🍝</div>
+            <h3>Authentic Recipes</h3>
+            <p>Traditional recipes passed down through generations for a true Italian taste.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🥖</div>
+            <h3>Fresh Ingredients</h3>
+            <p>We use the freshest local and imported ingredients to ensure quality dishes.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🍷</div>
+            <h3>Cozy Ambiance</h3>
+            <p>Enjoy your meal in a warm and inviting environment with Italian charm.</p>
+        </div>
+    </div>
+</section>
+
+<section class="menu-preview container" id="menu">
+    <div class="section-header">
+        <h2>Our Menu</h2>
+        <p>A delightful journey through Italy's most loved dishes.</p>
+    </div>
+    <div class="menu-cards">
+        <div class="menu-card">
+            <div class="menu-image">
+                <img src="https://media.tag24.de/951x634/d/k/dk0n88y0oao3wuxcr2o96h7l5xmzy59v.jpg" alt="Pasta">
+            </div>
+            <div class="menu-info">
+                <h3>Spaghetti Carbonara</h3>
+                <p>Classic Roman pasta with creamy egg sauce, pancetta, and pecorino cheese.</p>
+                <div class="price">$14</div>
+            </div>
+        </div>
+        <div class="menu-card">
+            <div class="menu-image">
+                <img src="https://image.freepik.com/free-photo/pizza-margherita-wooden-background-top-view-flyer-poster-restaurants-pizzerias_120962-7.jpg" alt="Pizza">
+            </div>
+            <div class="menu-info">
+                <h3>Margherita Pizza</h3>
+                <p>Fresh mozzarella, basil, and San Marzano tomatoes on a perfect crust.</p>
+                <div class="price">$12</div>
+            </div>
+        </div>
+        <div class="menu-card">
+            <div class="menu-image">
+                <img src="https://i.mctimg.com/cdn-cgi/image/w=600,h=600,fit=pad/https://i.mctimg.com/file/38c6113879ac7892915d80ba0d48e6dcedcfd9b9/e4d5b4e380ea274c9e3ba4c851596603478bceddf5eefc6d5cdd3ceff43ed53f" alt="Lasagna">
+            </div>
+            <div class="menu-info">
+                <h3>Traditional Lasagna</h3>
+                <p>Layers of pasta, ricotta, meat sauce, and parmesan baked to perfection.</p>
+                <div class="price">$16</div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="menu.html" class="btn">View Full Menu</a>
+    </div>
+</section>
+
+<section class="testimonials container" id="testimonials">
+    <div class="section-header">
+        <h2>What Our Customers Say</h2>
+    </div>
+    <div class="testimonial-cards">
+        <div class="testimonial-card">
+            <p class="testimonial-text">"Absolutely delicious! Reminds me of my trip to Rome. Will definitely be back!"</p>
+            <div class="author-info">
+                <h4>Anna R.</h4>
+                <div class="rating">★★★★★</div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <p class="testimonial-text">"Perfect atmosphere and even better food. A true Italian gem in the city!"</p>
+            <div class="author-info">
+                <h4>Michael D.</h4>
+                <div class="rating">★★★★★</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Reserve Your Table Today!</h2>
+    <p>Experience the magic of Italy at La Bella Tavola. Book your seat now!</p>
+    <a href="tablebooking.html" class="btn">Book Now</a>
+</section>
+
+<footer>
+    <div class="container footer-content" id="contact">
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="tablebooking.html">Reservations</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: info@labellatavola.com</li>
+                <li>Phone: (123) 456-7890</li>
+                <li>Address: 123 Main Street, Your City</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 La Bella Tavola. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>
